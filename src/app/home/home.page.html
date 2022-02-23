@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="allMenu()">
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-title style="margin-top: 10px;">
+            <h4>Nama/alamat Toko</h4>
+          </ion-title>
+        </ion-col>
+        <ion-col size="5">
+          <ion-toolbar style="margin-top: 15px;" color="primary">
+            <ion-searchbar mode="ios" showCancelButton="never" placeholder="Cari produk"></ion-searchbar>
+          </ion-toolbar>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- end -->
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-badge class="badge">6</ion-badge>
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollY="false">
+  <ion-grid>
+    <ion-row class="ion-no-padding ion-text-wrap">
+      <!-- Side Menu -->
+      <ion-col size="2">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-grid scrollY="true" class="scroll-items">
+                <ion-row class="ion-no-padding ion-text-wrap">
+                  <ion-col>
+                    <ion-item *ngFor="let n of Menus">
+                      <span>{{n}}</span>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+
+      <ion-col size="5">
+        <ion-grid scrollY="true" class="scroll-items">
+          <ion-row class="ion-no-padding ion-text-wrap">
+            <ion-col size="4" *ngFor="let n of listProducts; let idx=index" (click)="addCart(n)" [ngStyle]="">
+              <ion-card class="rounded-15">
+                <img src="{{n.image}}" class="object-bg" style="height: auto;">
+                
+                <ion-item lines="none" class="price">
+                  <span>Rp.{{n.price | number:'1.0-0'}}</span>
+                </ion-item>
+                
+                <ion-card-content [ngStyle]="{'background-color':selected[n.id] === true ? 'rgb(199, 199, 198)' : '' }">
+                  <ion-label>
+                    <ion-text color="primary">
+                      <h2>{{n.name}} {{idx+1}}</h2>
+                    </ion-text>
+                  </ion-label>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+
+      <!-- Carts -->
+      <ion-col size="5">
+        <ion-grid>
+          <ion-header>
+            <ion-row>
+              <ion-col>
+                <ion-item lines="none">
+                  <span>No. Meja</span>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item lines="none">
+                  <span>Nama Pelanggan</span>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-header>
+          <ion-row>
+            <ion-col>
+              <ion-grid scrollY="true" class="scroll-items-products">
+                <ion-row class="ion-no-padding ion-text-wrap">
+                  <ion-col>
+                    <ion-item *ngFor="let n of listItems; let idx=index">
+                      <div class="list-products">
+                        <span class="numbs">{{idx+1}}</span>
+                        <span> {{carts[n].name}}</span>
+                        <span class="priceSide"> Rp. {{(carts[n].price * carts[n].qty) | number: '1.0-0'}}</span>
+                      </div>
+                      
+                      <span class="add_remove_btn" (click)="editCart(n, '-')">-</span>
+                      <strong>{{carts[n].qty | number}}</strong>
+                      <span class="add_remove_btn add" (click)="editCart(n, '+')">+</span>
+                      <span class="add_remove_btn delete" (click)="editCart(n, 'x')"><ion-icon name="close-outline"></ion-icon></span>
+
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+
+          <!-- button -->
+          <ion-footer>
+            <ion-grid>
+              <ion-row>
+                <ion-col >
+                  <ion-label>
+                    <h3 style="font-weight: bold; font-size: 14px; color:rgb(68, 68, 68)">
+                      Total Harga
+                    </h3>
+                    <p>Rp. {{totalPrice | number:'1.0-0'}}</p>
+                  </ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-button color="warning" expand="block">SIMPAN</ion-button>
+                </ion-col>
+                <ion-col>
+                  <ion-button color="primary" expand="block">BAYAR</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-footer>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

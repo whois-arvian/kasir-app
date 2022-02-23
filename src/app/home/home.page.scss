@@ -1,0 +1,139 @@
+.top-left {
+  position: absolute;
+  top: 3%;
+  left: 0;
+  z-index: 10;
+}
+
+.top-right {
+  position: absolute;
+  top: 3%;
+  right: 0;
+  z-index: 10;
+}
+
+.info-jadwal {
+  position: relative;
+  top: -70px ;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.container {
+  position: relative;
+  top: -90px ;
+}
+
+ion-slides {
+  width: 100%;
+}
+
+.text-elipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bg-primary {
+  background: var(--ion-color-primary);
+  height: 100px;
+  border-radius: 0 0 15px 15px;
+}
+
+.card-profil {
+  position: relative;
+  top: -100px;
+  background: #FFFFFF;
+  /* Drop Shadow Normal */
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 16px;
+}
+
+.img-profil {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.badge {
+  position: absolute; 
+  margin-right: 10px; 
+  margin-bottom: 10px;
+  background-color: orange;
+  z-index: 1;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.scroll-items {
+  flex-wrap: wrap;
+  overflow-y: scroll !important;
+  overflow-x: auto;
+  --overflow: hidden;
+}
+
+.scroll-items ion-row { 
+    white-space: wrap;
+    height: 600px;
+}
+
+.scroll-items-products {
+  flex-wrap: wrap;
+  overflow-y: scroll !important;
+  overflow-x: auto;
+}
+
+.scroll-items-products ion-row { 
+    white-space: wrap;
+    height: 500px;
+}
+
+.list-products {
+  display: flex;
+}
+
+.numbs {
+  text-align: center;
+  margin-right: 10px; 
+  background-color: orange;
+  z-index: 1;
+  border-radius: 20px;
+  width: 30px;
+  height: 30px;
+}
+
+.price {
+  background: #4d4c4c;
+  opacity: 0.8;
+  margin-top: -50px; 
+}
+
+.priceSide {
+  margin-left: 50px;
+  margin-right: auto;
+}
+
+span {
+  &.add_remove_btn {
+      margin-left: 30px;
+      color: var(--primary);
+      border-radius: 3px;
+      min-width: 18px;
+      font-weight: 400;
+      font-size: 2.5rem;
+
+      &.add {
+          font-size: 2rem;
+      }
+
+      &.delete {
+          color: var(--ion-color-danger);
+          font-size: 1.4rem;
+          margin-left: 2rem;
+          margin-top: 0.5rem;
+      }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "appId": "com.kasir.id",
+  "appName": "Kasir",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
